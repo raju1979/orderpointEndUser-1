@@ -1,0 +1,70 @@
+<!--
+  Generated template for the RestaurantAboutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color='appdark'>
+    <ion-title>About Us</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="merchantNameContainer" margin-top margin-bottom>
+    <p>{{merchantDetails.merchantname}}</p>
+  </div>
+
+  <p ion-text color='danger' class="bold">About Us</p>
+
+  <div class="merchantAbout" margin-top margin-bottom>
+    <p>{{merchantDetails.aboutMe}}</p>
+  </div>
+
+
+  <div class="timingContainerOuter">
+    <p ion-text color='danger' class="bold" margin-top>Timings</p>
+
+    <div id="timingContainerHeader">
+      <ion-segment [(ngModel)]="timingSegment" color="primary">
+        <ion-segment-button value="Business">
+          Business
+        </ion-segment-button>
+        <ion-segment-button value="Delivery">
+          Delivery
+        </ion-segment-button>
+        <ion-segment-button value="Takeaway">
+          Takeaway
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div id="timingContainer">
+      <div class="timingRow" padding *ngFor='let day of openingHrs[timingSegment]'>
+        <div class="timingDay" ion-text color='primary'>{{day.day}}</div>
+        <div class="timingTimeContainer">
+          <div *ngIf='day.timing.length == 0; else openclosetimerows' class="closedDayText">
+            Closed
+          </div>
+          <ng-template #openclosetimerows>
+            <div *ngFor='let timeslot of day.timing' class=openingClosingRowContainer>
+              {{timeslot.OpeningHrs}} - {{timeslot.ClosingHrs}}
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button block color='danger' (click)='exit()'>Back</button>
+  </ion-toolbar>
+</ion-footer>

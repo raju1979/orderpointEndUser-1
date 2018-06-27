@@ -1,0 +1,45 @@
+page-restaurant-about {
+
+    .merchantNameContainer {
+        padding: 2px;
+        font-weight: bold;
+        border-bottom: 2px solid #bcdacc;
+    }
+
+    .merchantAbout {
+        line-height: 2rem;
+        box-shadow: 0px 2px 2px rgba(10,20,30,.5);
+        padding-bottom: 10px;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+    
+
+    // CSS for Timing Row
+
+    .timingRow {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 2px solid color($colors, danger); 
+    }
+
+    .timingDay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .openingClosingRowContainer {
+        padding: 5px;
+    }
+
+    .closedDayText {
+        font-weight: bold;
+        color: color($colors, danger);
+    }
+
+}

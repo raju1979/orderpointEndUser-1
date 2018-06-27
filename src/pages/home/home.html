@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color='appdark'>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,12 +7,55 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content>
+  <div id="outerContainer">
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+    <div id="searchContainerOuter">
+      <div id="searchInputContainer">
+        <input type="text" [placeholder]="filterPlaceholderText" [ngModel]='searchText' (ngModelChange)='searchRestaurants($event)' />
+        <button type="button" ion-button clear icon-only color="firebrick5" *ngIf='searchText.length > 1' (click)="searchText = ''">
+          <ion-icon name="close-circle"></ion-icon>
+        </button>
+      </div>
+      <button type="button" ion-button clear icon-only color="firebrick5" (click)='openFilterOptionsModal()'>
+        <ion-icon ios="ios-funnel" md="ios-funnel" color='redbrick'></ion-icon>
+      </button>
+    </div>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+    <!-- <div id="filterOuterContainer">
+
+    </div> -->
+
+    <div id="httpLoadingContainer" text-center *ngIf='httpRequestPending'>
+      <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+
+    <div class="restaurantContainer" *ngIf='restaurantsArray.length > 0 && filteredRestauransArray.length ==0'>
+      <ion-list>
+        <ion-item *ngFor='let restaurant of restaurantsArray' (click)='gotoRestaurantHome(restaurant)'>
+          <ion-avatar item-start>
+            <img [src]="restaurantLogoURL + restaurant.imageUrl" onError="this.src='assets/imgs/not_found.png'">
+          </ion-avatar>
+          <h2>{{restaurant?.MerchantName}}</h2>
+          <h3>{{restaurant?.cuisinename}}</h3>
+          <p>{{restaurant?.address}}</p>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div class="restaurantContainer" *ngIf='filteredRestauransArray.length > 0'>
+        <ion-list no-lines>
+          <ion-item *ngFor='let restaurant of filteredRestauransArray' (click)='gotoRestaurantHome(restaurant)'>
+            <ion-avatar item-start>
+              <img [src]="restaurantLogoURL + restaurant.photoUrl" onError="this.src='assets/imgs/not_found.png'">
+            </ion-avatar>
+            <h2>{{restaurant?.merchantname}}</h2>
+            <rating [(ngModel)]="restaurant.rating" max="5" readOnly="true">
+            </rating>
+            <p>{{restaurant?.address.address1}}</p>
+          </ion-item>
+        </ion-list>
+      </div>
+
+  </div>
 </ion-content>

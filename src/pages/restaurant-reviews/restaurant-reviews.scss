@@ -1,0 +1,38 @@
+page-restaurant-reviews {
+
+    .merchantName {
+        font-weight: bold;
+        font-size: 2rem;
+    }
+
+    ul {
+        padding: 0px;
+        margin: 1px;
+        &.rating li {
+          padding: 1px 2px !important;
+          background: none;
+          color: #35bce6;
+      
+          ion-icon {
+            font-size: 16px;
+          }
+        }
+      }
+
+      .restaurantRatingContainer {
+        ul {
+            padding: 0px;
+            margin: 1px;
+            &.rating li {
+              padding: 1px 2px !important;
+              background: none;
+              color: #558b2f ;
+          
+              ion-icon {
+                font-size: 32px;
+              }
+            }
+          }
+      }
+
+}

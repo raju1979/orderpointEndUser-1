@@ -1,0 +1,58 @@
+page-search-filter-popover {
+
+    #outerContainer {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+
+        .containerRow {
+            width: 100%;
+            margin: 10px 0;            
+        }
+
+        .filterTitleRowContainer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            border-bottom: 2px solid #52abbf;
+
+            .filterTitle {
+                font-size: 2rem;
+            }
+        }
+
+        .locationInfoContainer {
+            display: flex;
+            align-items: center;
+        }
+
+        ion-icon {
+            font-size: 3rem;
+        }
+
+        .no-padding {
+            padding: 0;
+        }
+
+        .font1rem {
+            font-size: 1.2rem;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        ion-icon.font1rem {
+            font-size: 1.5rem;
+        }
+
+        .item {
+            padding-left: 0 !important;
+        }
+
+
+    }
+
+}

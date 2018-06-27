@@ -1,0 +1,25 @@
+page-location-search-popover {
+
+    #outerContainer {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+
+        .containerRow {
+            width: 100%;
+            margin: 10px 0;            
+        }
+
+        .locationSearchInput {
+            width: 100%;
+            border: none;
+            outline: none;
+            height: 40px;
+            padding-left: 10px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #cdcdcd; 
+        }
+
+    }
+
+}

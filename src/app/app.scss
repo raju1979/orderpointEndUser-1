@@ -14,3 +14,56 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+.modal-wrapper {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0 !important;
+}
+
+.sidebar {
+    // background: url(assets/imgs/burger-menu-bg.png) center center no-repeat;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .toolbar-background {
+        background: transparent;
+        border: none;
+    }
+
+    .user-name {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
+
+.menuRowContainer {
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    border-bottom: 2px solid red;
+}
+
+
+.userContainer {
+    background: rgba(0,0,0, .3);
+}
+
+.imgContainer {
+    padding: 10px;
+}
+
+.avatarImg {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}

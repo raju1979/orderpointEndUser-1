@@ -1,0 +1,200 @@
+page-restaurant-home {
+
+    #outerContainer {
+        width: 100%;
+        height: 100%;
+
+        ion-spinner {
+            width: 40px !important;
+            height: 40px !important;
+        }
+
+        img.loadingBall {
+            width: 100px !important;
+            height: 100px !important;
+        }
+
+        #restaurantImgContainer {
+            width: 100%;
+            height: 250px;
+            background-image: url(https://loremflickr.com/600/400/restaurant);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            position: relative;
+
+            #restaurantImgInnerContainer {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 10;
+                background: linear-gradient(to bottom, rgba(255, 255, 255, .3) 0%,rgba(0, 0, 0, .8) 100%);
+            }
+
+            #restaurantImgInnerContainerForInfo {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 20;
+                display: flex;
+                flex-direction: column;
+
+                #topContainer {
+                    width: 100%;
+                    height: 30%;
+                }
+
+                #bottomContainer {
+                    width: 100%;
+                    flex: 1;
+                    // background: red;
+                    padding: 5px;
+
+                    .merchantNameText {
+                        font-size: 1.8rem;
+                        font-weight: bold;
+                    }
+
+                    ul {
+                        padding: 0px;
+                        margin: 1px;
+                        &.rating li {
+                          padding: 1px 2px !important;
+                          background: none;
+                          color: #35bce6;
+                      
+                          ion-icon {
+                            font-size: 16px;
+                          }
+                        }
+                      }
+
+                }
+            }
+
+        }
+
+        .grid-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-auto-rows: minmax(100px, auto);
+            column-gap: 10px;
+            row-gap: 1em;
+            box-shadow: 0px 2px 3px rgba(10,20,30,.5);
+
+            .grid-content {
+                width: 100%;
+                height: 100%;
+                background: rgba(255,243,224, .5);
+                padding: 0 5px;
+            }
+        }
+
+        #popularDishesSectionOuter {
+            padding: 10px;
+        }
+
+        .categoryHeaders {
+            font-weight: bold;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+
+        .menuImgContainer {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+
+            img {
+                max-height: 100%;
+                max-width: 100%;
+            }
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .rem2 {
+            font-size: 1.5rem;
+        }
+
+
+        .menuGroupCategoryOuter {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+
+            .menuHeadingContainer {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #f5f5f5;
+            }
+
+            .menuGroupItemsContainer {
+                overflow: hidden;
+
+                .menuItemSelectionRow {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 10px 0;
+
+                    .veg-nonveg-img {
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 5px;
+                    }
+
+                    .itemNamePriceContainer {
+                        flex : 1;
+                        display: flex;
+                        min-width: 1px;
+                        flex-direction: column;
+
+                        .optionItemName {
+                            font-weight: bold;
+                            font-size: 1.3rem;
+                            color: #7f7b7b;
+                            white-space: nowrap; 
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+
+                        .optionItemPrice {
+                            font-weight: bold;
+                            color: #a59b9b;
+                        }
+                    }
+
+                    .quantitySelectBox {
+                        width: 120px;
+                        height: 40px;
+                        border: 1px solid #000;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .qty-input {
+                            width: 50px;
+                            text-align: center;
+                        }
+                    }
+
+                }
+            }
+
+        }
+
+    }
+
+}

@@ -1,0 +1,51 @@
+<!--
+  Generated template for the RestaurantReviewsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color='appdark'>
+    <ion-title>Reviews</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <p ion-text class="merchantName" text-center margin-bottom>{{merchantDetail.merchantname}}</p>
+
+  <div class="restaurantRatingContainer" margin-top margin-bottom text-center>
+      <rating [(ngModel)]="merchantReviews.average_restaurant_rating" max="5" readOnly="true"></rating>
+  </div>
+
+  <ion-card *ngFor='let review of merchantReviews.reviews'>
+    <ion-card-header>
+      <div>{{review.review_title}}</div>
+      <div ion-text color='lightgrey1'>{{review.customer_name}}</div>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="review_text">
+        {{review.review_text}}
+      </div>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear small>
+            <rating [(ngModel)]="review.start_rating" max="5" readOnly="true"></rating>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="ios-calendar-outline" color='danger'></ion-icon>
+          <div>{{review.review_date}}</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+</ion-content>

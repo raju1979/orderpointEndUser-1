@@ -1,0 +1,61 @@
+<!--
+  Generated template for the SearchFilterPopoverPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color='appdark'>
+    <ion-title>Filter Your Search</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div id="outerContainer">
+
+    <button ion-button clear block class="no-padding" (click)='presentLocationSearchModal()'>
+      <div class="filterTitleRowContainer">
+        <span class="filterTitle">Select Location</span>
+        <ion-icon name="arrow-dropright-circle"></ion-icon>
+      </div>
+    </button>
+
+    <div class="locationInfoContainer">
+      <p class="font1rem bold" ion-text color='niceblue' margin-right>Current Location </p>
+      <ion-icon class="font1rem" color='niceblue' name="arrow-round-forward"></ion-icon>
+      <p margin-left class="font1rem bold" *ngIf='location?.id'>{{location?.suburb}} - {{location?.postcode}}</p>
+    </div>
+
+    <div id="selectOuterContainer">
+      <ion-item>
+        <ion-label>Cuisine</ion-label>
+        <ion-select [(ngModel)]="cuisineId"  (ionChange)="getCuisineId($event)" multiple="true">
+            <ion-option value={{cuisine.id}} *ngFor='let cuisine of cuisineTypeArray'>
+              {{cuisine.cuisineName}}
+            </ion-option>
+            <!-- <ion-option *ngFor="let s of suburb;let i=index" (ionSelect)="myIndex = i" value={{s.suburb_id}}>{{s.suburb_name}}</ion-option> -->
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div class="buttonContainer" text-center margin-top>
+        <button ion-button text-center (click)='searchRestaurants()' [disabled]='!location'>Search</button>
+    </div>
+    
+    <div id="httpLoadingContainer" text-center *ngIf='httpRequestPending'>
+      <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color='danger'>
+    <button ion-button block color='light' clear (click)='onCancel()'>Cancel</button>
+  </ion-toolbar>
+</ion-footer>

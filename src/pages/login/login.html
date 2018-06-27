@@ -1,0 +1,69 @@
+<ion-content>
+
+  <div id="outerContainter" [style.backgroundImage]="'url('+ getImageFromAssets('loginBg1.png') +')'">
+
+    <div id="header">
+      <img  [src]="getImageFromAssets('orderPointLogo.png')" alt="">
+    </div>
+
+    <h5 margin-vertical ion-text text-center color='appdark' class="uppercase">Register &amp; sign in</h5>
+
+    <div  id="formContainer" padding>
+      <form #f="ngForm" (ngSubmit) = "onLoginSubmit(f)">
+
+        <div margin-vertical class="form-control-container">
+          <input
+            placeholder="Email"
+            class="formInput"
+            type="email"
+            name='email'
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+            ngModel
+            required
+          />
+        </div>
+
+        <div margin-vertical class="form-control-container">
+          <input
+            placeholder="Password"
+            [type]="inputType"
+            name='password' ngModel
+            required
+            class="formInput"
+          />
+          <button type="button" ion-button icon-only clear (click) = "toggleInputType()">
+            <ion-icon [name]="inputToggleIcon"  color="firebrick5"></ion-icon>
+          </button>
+        </div>
+
+        <div text-center margin-top>
+            <button type="submit"class='submitBtn' ion-button color="firebrick5" [disabled] = '!f.valid || httpRequestPending'>Login</button>
+        </div>
+
+      </form>
+    </div>
+
+    <div text-center *ngIf='httpRequestPending'>
+      <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+
+    <div text-center>
+      <button ion-button clear color='dark' (click) = "forgotPassword()">Forgot Password?</button>
+    </div>
+
+    <h2 class="background double"><span>or connect with</span></h2>
+
+    <div class="socialIconsContainer" padding>
+      <img class="socialIcons" [src]="getImageFromAssets('facebook.png')" alt="" (click)='loginWithFacebook()'>
+      <img class="socialIcons" [src]="getImageFromAssets('google-plus.png')" alt="" (click) = "loginWithGoogle()">
+      <img class="socialIcons" [src]="getImageFromAssets('twitter.png')" alt="">
+      <img class="socialIcons" [src]="getImageFromAssets('instagram.png')" alt="">
+    </div>
+
+    <div id="extraContent" *ngIf= 'platformDimension?.height > 750'>
+      <p padding>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+
+  </div>
+
+</ion-content>

@@ -3,9 +3,23 @@
     "no-duplicate-variable": true,
     "no-unused-variable": [
       true
-    ]
+    ],
+    "no-empty": true,
+    "no-var-keyword": true,
+    "triple-equals": [true, "allow-null-check", "allow-undefined-check"],
+    "max-line-length": [true, {"limit": 120, "ignore-pattern": "^import |^export {(.*?)}"}],
+    "comment-format": [true, "check-space", "check-uppercase"],
+    "newline-before-return": true,
+    "no-consecutive-blank-lines": [true, 2],
+    "no-irregular-whitespace": true,
+    "no-trailing-whitespace": [true, "ignore-comments"],
+    "semicolon": [true, "always", "ignore-interfaces"],
+    "whitespace": [true, "check-branch", "check-operator", "check-typecast", "check-type", "check-separator", "check-decl"]
   },
   "rulesDirectory": [
     "node_modules/tslint-eslint-rules/dist/rules"
+  ],
+  "extends": [
+    "tslint-config-prettier"
   ]
 }
