@@ -1,58 +1,201 @@
 page-home {
+  #outerContainer {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
 
-    #outerContainer {
-        width: 100%;
-        height: 100%;
-        padding: 10px;
+    -webkit-margin-before:0em;
+    -webkit-margin-after:0em;
 
-        ul {
-            padding: 0px;
-            margin: 1px;
-            &.rating li {
-              padding: 1px 2px !important;
-              background: none;
-              color: #ffb400;
-          
-              ion-icon {
-                font-size: 16px;
-              }
-            }
-          }
-
-        #searchContainerOuter {
-            width: 100%;
-            // padding: 5px 0;
-            height: 40px;
-            box-shadow: 0px 2px 2px rgba(10 ,20,30, .5);
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            #searchInputContainer {
-                flex: 1;
-                height: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-
-                input {
-                    height: 100%;
-                    flex: 1;
-                    padding-left: 10px;
-                    border: none;
-                    outline: none;
-                    color: color($colors, niceblue);
-                }
-            }
-        }
-
-        #filterOuterContainer {
-            width: 100%;
-            min-height: 50px;
-            background: rgba(50, 60, 200, .5);
-        }
-
+    ion-avatar img {
+      border-radius: 0;
     }
 
+    .catHeadingText {
+      font-size: 2.5rem;
+    }
+
+    ul {
+      padding: 0px;
+      margin: 1px;
+      &.rating li {
+        padding: 1px 2px !important;
+        background: none;
+        color: #ffb400;
+
+        ion-icon {
+          font-size: 16px;
+        }
+      }
+    }
+
+    #offersSliderContainer {
+      width: 100%;
+      height: 200px;
+    //   background: #ceccee;
+      overflow: hidden;
+      overflow-x: scroll;
+      white-space: nowrap;
+      margin-bottom: 20px;
+
+      .offersCardOuter {
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        margin-right: 10px;
+        // background: #cecece;
+        // padding: 0 5px;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+
+        .offerCardInner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .topPartOffer, .bottomPartOffer {
+                flex: 1;
+            }
+
+            .bottomPartOffer {
+                background: rgba(0, 0, 0, .5);
+                // word-break:break-all;
+                white-space: normal;
+                padding: 5px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+            }
+        }
+
+        
+      }
+    }
+
+    #searchContainerOuter {
+      width: 100%;
+      // padding: 5px 0;
+      height: 40px;
+      box-shadow: 0px 2px 2px rgba(10, 20, 30, 0.5);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      #searchInputContainer {
+        flex: 1;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+          height: 100%;
+          flex: 1;
+          padding-left: 10px;
+          border: none;
+          outline: none;
+          color: color($colors, niceblue);
+        }
+      }
+    }
+
+    #filterOuterContainer {
+      width: 100%;
+      min-height: 50px;
+      background: rgba(50, 60, 200, 0.5);
+    }
+
+    #featuredRestaurantContainerInner {
+      width: 100%;
+      height: 150px;
+      // background: #cecece;
+      overflow: hidden;
+      overflow-x: scroll;
+      white-space: nowrap;
+      margin-bottom: 20px;
+    }
+
+    .featuredRestarurantCardOuter {
+      display: inline-block;
+      width: 150px;
+      height: 150px;
+      margin-right: 10px;
+      // background: #cecece;
+      padding: 0 5px;
+
+      .featuredImgDivContainer {
+        width: 100%;
+        height: 70px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px 5px 0 0;
+        text-align: center;
+        background: rgba(226, 238, 235, 0.5);
+
+        span.restaurantRating {
+            padding: 2px 8px;
+            border-radius: 2px 0 0 2px;
+            background: color($colors, firebrick5);
+            color: #fff;
+            position: absolute;
+            right: 0;
+            top: 10%;
+        }
+
+        img {
+          height: 100%;
+          max-width: 100%;
+        }
+      }
+
+      .featuredMerchantName {
+        color: #111111;
+      }
+
+      .featuredCuisineName {
+        color: #cacaca;
+      }
+
+      .featuredMerchantNameOuter {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 5px 0;
+      }
+    }
+
+    .mostpopularTitleRow {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .uppercase {
+        text-transform: uppercase;
+    }
+
+    .capitalize {
+        text-transform: capitalize;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .rem1 {
+        font-size: 1.5rem;
+    }
+
+    .rem2 {
+      font-size: 2rem;
+    }
+
+    .inline-block {
+        display: inline-block;
+    }
+  }
 }

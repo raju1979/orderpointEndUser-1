@@ -40,6 +40,10 @@
             <button type="submit"class='submitBtn' ion-button color="firebrick5" [disabled] = '!f.valid || httpRequestPending'>Login</button>
         </div>
 
+        <div text-center margin-top>
+            <button type="submit"class='submitBtn' ion-button color="firebrick5">Continue as Guest</button>
+        </div>
+
       </form>
     </div>
 
@@ -51,7 +55,7 @@
       <button ion-button clear color='dark' (click) = "forgotPassword()">Forgot Password?</button>
     </div>
 
-    <h2 class="background double"><span>or connect with</span></h2>
+    <h2 class="background double"><span>Or</span></h2>
 
     <div class="socialIconsContainer" padding>
       <img class="socialIcons" [src]="getImageFromAssets('facebook.png')" alt="" (click)='loginWithFacebook()'>

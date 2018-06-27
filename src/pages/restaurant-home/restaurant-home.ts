@@ -64,9 +64,7 @@ export class RestaurantHomePage {
     private _modalCtrl: ModalController
   ) {
 
-  }; // end constructor
-
-
+  } // End constructor
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RestaurantHomePage hhh');
@@ -79,7 +77,7 @@ export class RestaurantHomePage {
 
           this._storage.get('userdata')
             .then((user) => {
-              if(!user) {
+              if (!user) {
                 this._storage.clear();
                 this.navCtrl.setRoot(LoginPage);
               }
@@ -89,11 +87,13 @@ export class RestaurantHomePage {
 
               const payload = {
                 merchant_id: val.merchantId
+              // tslint:disable-next-line:semicolon
               }
 
               const token = user.token;
 
-              this.remote.getAllInfoAboutSelectedRestaurant(this.restaurantInfoFromStorage.merchantId || this.restaurantInfoFromStorage.merchantid, token, payload)
+              this.remote.getAllInfoAboutSelectedRestaurant(this.restaurantInfoFromStorage.merchantId ||
+                this.restaurantInfoFromStorage.merchantid, token, payload)
                 .finally(() => this.httpRequestPending = false)
                 .subscribe((resp: any) => {
                   console.log(resp);
@@ -111,10 +111,10 @@ export class RestaurantHomePage {
                   } else {
                     console.log(resp);
                     this.allDataLoadedSuccessFully = true;
-                    this.merchantDetail = resp[0].data.merchants; //get merchant details
-                    this.menuGroups = resp[1].data[0].menuItems; // get menu groups
+                    this.merchantDetail = resp[0].data.merchants; // Get merchant details
+                    this.menuGroups = resp[1].data[0].menuItems; // Get menu groups
                     console.log(this.menuGroups);
-                    // this.foodTruckLocations = resp[2].data.merchants.operatinghrs.FoodtruckLocations;
+                    // This.foodTruckLocations = resp[2].data.merchants.operatinghrs.FoodtruckLocations;
                     this.merchantReviews = resp[2].data;
                     this.featuredMenu = this.menuGroups[0];
                     console.log(this.featuredMenu);
@@ -127,19 +127,19 @@ export class RestaurantHomePage {
                       group.GroupWiseMenuItems.forEach(item => {
                         item['qty'] = 0;
                         item['newQty'] = 0;
-                      })
+                      });
                     });
                     console.log(this.menuGroups);
                   }
                 }, (err) => {
                   console.log(err);
                   this.presentResponseErrorConfirm();
-                })
-            })
+                });
+            });
 
         }
-      })
-  }; //
+      });
+  } //
 
   getExpandButtonName(isExpanded) {
     if (isExpanded) {
@@ -147,34 +147,35 @@ export class RestaurantHomePage {
     } else {
       return 'add-circle';
     }
-  }; //
+  } //
 
   toggleExpand(menuGroup) {
     console.log(menuGroup);
     menuGroup.expanded = !menuGroup.expanded;
-  }; //
+  } //
 
   getVegNonVegImg(item) {
     let imgStr: string = '';
     if (!item.vegOrNonVeg) {
       imgStr = `assets/imgs/veg.png`;
-    } else if (item.vegOrNonVeg == 'veg') {
+    } else if (item.vegOrNonVeg === 'veg') {
       imgStr = `assets/imgs/veg.png`;
     } else {
       imgStr = `assets/imgs/non-veg.png`;
     }
-    return imgStr
-  }; //
+
+    return imgStr;
+  } //
 
   getMenuItemImage(img) {
     return this.itemImage_url + img;
-  }; //
+  } //
 
   addItem(item) {
     console.log(item);
     item.newQty++;
     this.modifyUserSelectedQty(item);
-  }; //
+  } //
 
   removeItem(item) {
     console.log(item);
@@ -182,32 +183,32 @@ export class RestaurantHomePage {
       item.newQty--;
       this.modifyUserSelectedQty(item);
     }
-  }; //
+  } //
 
   /*
     This method is used to modify user selected items quantity
   */
   modifyUserSelectedQty(item) {
-    //search for key == item.menuItemId
-    if (this.userSelectedItems[item.menuItemId]) { // if key is found then increase or decrease quantity
+    // Search for key == item.menuItemId
+    if (this.userSelectedItems[item.menuItemId]) { // If key is found then increase or decrease quantity
       this.userSelectedItems[item.menuItemId]['qty'] = item.newQty;
-    } else { //if no key exists then create new key == item.menuItemId
+    } else { // If no key exists then create new key == item.menuItemId
       console.log('new item');
       this.userSelectedItems[item.menuItemId] = {
         'qty': item.newQty
-      }
+      };
     }
 
     console.log(this.userSelectedItems);
-  }; //
+  } //
 
   readAllReviews() {
     console.log(this.merchantDetail, this.merchantReviews);
-    this.navCtrl.push(RestaurantReviewsPage, { merchantDetail: this.merchantDetail, merchantReviews: this.merchantReviews });
+    this.navCtrl.push(RestaurantReviewsPage,
+      { merchantDetail: this.merchantDetail, merchantReviews: this.merchantReviews });
   }
 
   presentResponseErrorConfirm() {
-    var a = 10;
     let alert = this._alertCtrl.create({
       title: 'Error',
       message: 'There is some Error. Please reselect the restaurant?',
@@ -222,7 +223,7 @@ export class RestaurantHomePage {
       ]
     });
     alert.present();
-  }; //
+  } //
 
   openRestaurantAboutModal() {
     let aboutModal = this._modalCtrl.create(RestaurantAboutPage, { data: this.merchantDetail });

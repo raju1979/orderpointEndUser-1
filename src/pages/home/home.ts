@@ -26,6 +26,7 @@ export class HomePage {
   filterPlaceholderText = `Search By ${this.filterOnText}`;
 
   restaurantsArray: Array<any> = [];
+  featuredRestaurantsArray: Array<any> = [];
   filteredRestauransArray: Array<any> = [];
 
   restaurantLogoURL =
@@ -33,6 +34,27 @@ export class HomePage {
 
   featuredImageUrl =
     "https://adminstaging.azurewebsites.net/uploadedimages/MerchantGeneralSetting/";
+
+  offserArray: Array<any> = [
+    {
+      offerId: 'x112',
+      offerTitle: 'Get 20% off on ABCD',
+      offerDescription: 'Valid on Sandwich and pipes',
+      imgUrl: 'https://loremflickr.com/320/240/food,restaurant/all?random=1'
+    },
+    {
+      offerId: 'x113',
+      offerTitle: 'Get 10% off on ZZZZ',
+      offerDescription: 'Valid on Mi. 2000 shopping',
+      imgUrl: 'https://loremflickr.com/320/240/food,restaurant/all?random=2'
+    },
+    {
+      offerId: 'x114',
+      offerTitle: 'Get 50% off on NNNN From XXXXX',
+      offerDescription: 'Valid on Min. 500 shopping',
+      imgUrl: 'https://loremflickr.com/320/240/food,restaurant/all?random=3'
+    }
+  ];
 
   constructor(
     public navCtrl: NavController,
@@ -60,12 +82,13 @@ export class HomePage {
             this.allData = resp.data;
             console.log(this.allData);
             this.restaurantsArray = this.allData.getPopularRestaurantsByLocality[0].data;
+            this.featuredRestaurantsArray = this.allData.getFeaturedRestaurants[0].data;
             console.log(this.restaurantsArray);
-            //set allData into storage
+            // Set allData into storage
             this._storage.set('alldata', this.allData)
               .then((val) => {
                 console.log('All Data saved to storage');
-              })
+              });
           } else {
             this.presentToast("Please try again later");
           }
@@ -98,16 +121,16 @@ export class HomePage {
     this._storage.set('restaurantinfo', restaurant)
       .then(() => {
         setTimeout(() => {
-          this.navCtrl.push(RestaurantHomePage)
+          this.navCtrl.push(RestaurantHomePage);
         }, 50);
-      })
-  }; // end gotoRestaurantHome 
+      });
+  } // End gotoRestaurantHome 
 
   openFilterOptionsModal() {
     let filterModal = this._modalCtrl.create(SearchFilterPopoverPage);
     filterModal.onDidDismiss(data => {
       console.log(data);
-      if(data.success) {
+      if (data.success) {
         this.filteredRestauransArray = data.data;
       }
     });

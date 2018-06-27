@@ -25,7 +25,7 @@ export class LocationSearchPopoverPage {
 
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     private _toastCtrl: ToastController,
     private remote: RemoteServiceProvider,
@@ -46,10 +46,6 @@ export class LocationSearchPopoverPage {
           if (resp[0].status === 1) {
             this.locationArray = resp[0].data;
             console.log(this.locationArray);
-            const location = _.findIndex(this.locationArray, (o) => { 
-              return o.suburb == 'GIBSON DESERT NORTH'; 
-            });
-            console.log(location);
           } else {
             this.presentToast("Please try again later");
           }
@@ -64,7 +60,7 @@ export class LocationSearchPopoverPage {
   onCancel() {
     let data = { 'success': false };
     this._viewCtrl.dismiss(data);
-  }; //
+  } //
 
   presentToast(msg: string) {
     const toast = this._toastCtrl.create({
@@ -79,8 +75,9 @@ export class LocationSearchPopoverPage {
   getLocationPlaceholderText() {
     let placeholderText: string;
     placeholderText = `Please Enter ${this.locationCriteriaText}`;
+
     return placeholderText;
-  }; //
+  } //
 
   changeLocationCriteria(criteria: string) {
     this.locationCriteriaText = criteria;
@@ -90,15 +87,15 @@ export class LocationSearchPopoverPage {
 
   searchLocation(event) {
     this.locationSearchtext = event;
-    if(this.locationSearchtext.length > 2) {
+    if (this.locationSearchtext.length > 2) {
       console.log('do somehting');
-      if(this.locationCriteriaText === 'postcode') {
+      if (this.locationCriteriaText === 'postcode') {
         this.searchLocationByPostcode();
       } else {
         this.searchLocationBySuburb();
-      }      
+      }
     }
-  }; //
+  } //
 
   searchLocationByPostcode() {
     console.log(this.locationSearchtext);
@@ -107,10 +104,10 @@ export class LocationSearchPopoverPage {
 
     this.filteredLocationArray = this.locationArray.filter((o) => {
       return (o.postcode.toLowerCase().trim().indexOf(this.locationSearchtext.trim().toLocaleLowerCase()) > -1);
-    })
+    });
 
     console.log(this.filteredLocationArray);
-  }; //
+  } //
 
   searchLocationBySuburb() {
     console.log(this.locationSearchtext);
@@ -119,10 +116,10 @@ export class LocationSearchPopoverPage {
 
     this.filteredLocationArray = this.locationArray.filter((o) => {
       return (o.suburb.toLowerCase().trim().indexOf(this.locationSearchtext.toLowerCase().trim()) > -1);
-    })
+    });
 
     console.log(this.filteredLocationArray);
-  }; //
+  } //
 
   selectLocation(location) {
     let data = { 'success': true, location: location };
