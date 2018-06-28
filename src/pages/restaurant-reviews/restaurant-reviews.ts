@@ -18,8 +18,8 @@ export class RestaurantReviewsPage {
     this.merchantReviews = this.navParams.get('merchantReviews');
     this.merchantDetail = this.navParams.get('merchantDetail');
 
-    console.log(this.merchantDetail)
-    console.log(this.merchantReviews)
+    console.log(this.merchantDetail);
+    console.log(this.merchantReviews);
   }
 
   ionViewDidLoad() {

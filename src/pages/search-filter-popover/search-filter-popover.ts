@@ -25,7 +25,7 @@ export class SearchFilterPopoverPage {
 
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     private _toastCtrl: ToastController,
     private remote: RemoteServiceProvider,
@@ -36,33 +36,31 @@ export class SearchFilterPopoverPage {
   }
 
   ionViewDidLoad() {
-    
+
     this._storage.get('alldata')
       .then((val) => {
         console.log(val);
-        if(val) {
+        if (val) {
           this.cuisineTypeArray = val['getCuisineTypeData'][0].data;
           console.log(this.cuisineTypeArray);
         }
-      })
+      });
 
   }
 
   onCancel() {
     let data = { 'success': false };
     this._viewCtrl.dismiss(data);
-  }; //
-
-  
+  } //
 
   getCuisineId($event: any) {
     this.cuisineId = $event;
     console.log(this.cuisineId.join());
-  }; //
+  } //
 
   searchRestaurants() {
     let cuisinesTypeString: string;
-    if(!this.cuisineId) {
+    if (!this.cuisineId) {
       cuisinesTypeString = '';
     } else {
       cuisinesTypeString = this.cuisineId.join();
@@ -83,18 +81,16 @@ export class SearchFilterPopoverPage {
         this.httpRequestPending = false;
       }).subscribe((resp: any) => {
         console.log(resp);
-        if(resp.status === 0) {
+        if (resp.status === 0) {
           this.presentToast('No restaurant found for your query. Please change search criteria');
         } else {
           this.merchantsArray = resp.data.merchants;
           let data = { 'success': true, data:  this.merchantsArray};
           this._viewCtrl.dismiss(data);
         }
-      })
+      });
 
-    
-
-  }; //
+  } //
 
   presentToast(msg: string) {
     const toast = this._toastCtrl.create({
@@ -110,13 +106,13 @@ export class SearchFilterPopoverPage {
     let profileModal = this._modalCtrl.create(LocationSearchPopoverPage, { userId: 8675309 });
     profileModal.onDidDismiss(data => {
       console.log(data);
-      if(data.success) {
+      if (data.success) {
         this.location = data.location;
         console.log(this.location);
       }
     });
     profileModal.present();
-  }; //
- 
+  } //
+
 
 }

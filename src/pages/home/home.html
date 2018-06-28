@@ -57,14 +57,31 @@
       </div>
       
       <div class="restaurantContainer">
-        <ion-list>
+        <ion-list no-lines>
           <ion-item *ngFor='let restaurant of restaurantsArray' (click)='gotoRestaurantHome(restaurant)'>
-            <ion-avatar item-start>
+            <ion-avatar item-start class="home-avatar">
               <img [src]="restaurantLogoURL + restaurant.imageUrl" onError="this.src='assets/imgs/not_found.png'">
             </ion-avatar>
             <h2>{{restaurant?.MerchantName}}</h2>
             <h3>{{restaurant?.cuisinename}}</h3>
             <p>{{restaurant?.address}}</p>
+            <div class="badgeTextContainer">
+              <img src="assets/imgs/offer-star.png" class="offer-star" alt="" /> {{restaurant?.badgeText}}
+            </div>
+            <div class="popoverExtraInfoRow">
+              <span class="restaurantStar commonForPopoverExtraInfoRow">
+                <rating [(ngModel)]="restaurant.restaurantRating" max="5" readOnly="true"></rating>
+              </span>
+              <span class="restaurantDistance commonForPopoverExtraInfoRow">
+                {{restaurant?.restaurantDistance}}
+              </span>
+              <span class="restaurantTime commonForPopoverExtraInfoRow">
+                {{restaurant?.restaurantTime}}
+              </span>
+              <span class="restaurantFoodCost commonForPopoverExtraInfoRow">
+                {{restaurant?.restaurantFoodCost}}
+              </span>
+            </div>
           </ion-item>
         </ion-list>
       </div>

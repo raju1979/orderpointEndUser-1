@@ -81,7 +81,21 @@ export class HomePage {
           if (resp.status === 1) {
             this.allData = resp.data;
             console.log(this.allData);
+            // This is for popularRestaurants array
             this.restaurantsArray = this.allData.getPopularRestaurantsByLocality[0].data;
+
+            // Add dummy data to this.restaurantsArray
+            this.restaurantsArray.forEach(elem => {
+              elem['badgeText'] = '30% off on select category';
+              elem['restaurantRating'] = 4.3;
+              elem['restaurantDistance'] = '3 KM';
+              elem['restaurantTime'] = '30 Mins';
+              elem['restaurantFoodCost'] = '$300 For Two';
+
+            });
+
+            console.log(this.restaurantsArray);
+
             this.featuredRestaurantsArray = this.allData.getFeaturedRestaurants[0].data;
             console.log(this.restaurantsArray);
             // Set allData into storage

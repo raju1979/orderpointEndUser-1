@@ -7,12 +7,33 @@ page-home {
     -webkit-margin-before:0em;
     -webkit-margin-after:0em;
 
+    .home-avatar {
+      margin-top: 18px;
+    }
+
     ion-avatar img {
       border-radius: 0;
+      width: 60px;
+      height: 60px;
+    }
+
+    ion-item {
+      align-items: flex-start;
     }
 
     .catHeadingText {
       font-size: 2.5rem;
+    }
+
+    .badgeTextContainer {
+      font-size: 1.2rem;
+      color: color($colors, firebrick5);
+
+      .offer-star {
+        height: 10px;
+        width: auto;
+      }
+
     }
 
     ul {
@@ -197,5 +218,35 @@ page-home {
     .inline-block {
         display: inline-block;
     }
+
+    .popoverExtraInfoRow {
+      width: 100%;
+      padding: 2px 5px 0px 5px;
+      margin-top: 5px;
+      display: flex;
+      justify-content: space-between;
+      border-top: 2px solid color($colors, lightgrey2);
+
+      ul {
+        padding: 0px;
+        margin: 1px;
+        &.rating li {
+          padding: 1px 2px !important;
+          background: none;
+          color: color($colors, lightgrey1);
+      
+          ion-icon {
+            font-size: 10px;
+          }
+        }
+      }
+
+      .commonForPopoverExtraInfoRow {
+        font-size: 1rem;
+        color: color($colors, lightgrey1);
+        font-weight: bold;
+      }
+    }
+
   }
 }

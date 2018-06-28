@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, } from '@angular/common/http';
 import { RequestOptions, Request, RequestMethod } from '@angular/http';
 import { Injectable } from '@angular/core';
 
-// import { Observable } from 'rxjs/Rx';
+// Import { Observable } from 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -26,17 +26,17 @@ export class RemoteServiceProvider {
   constructor(private _http: HttpClient) {
     console.log('Hello RemoteServiceProvider Provider');
     this.instance = 'https://adminstaging.azurewebsites.net/';
-    ///this.instance = 'http://localhost:8383/sangeetha/GitHubRepo/OrderpointAdmin/public/';
+    /// This.instance = 'http://localhost:8383/sangeetha/GitHubRepo/OrderpointAdmin/public/';
     this.api_endpoint = 'api/v1/';
   }
 
   get(api) {
     let url = this.instance + this.api_endpoint + api;
-    //let body = JSON.stringify(data);
-    //let headers = new Headers({ "Content-Type": "application/json"});
-    //let options = new RequestOptions({ headers: headers });
+    // Let body = JSON.stringify(data);
+    // Let headers = new Headers({ "Content-Type": "application/json"});
+    // Let options = new RequestOptions({ headers: headers });
 
-    return this._http.get(url)
+    return this._http.get(url);
   }
 
   getAllDataAndLocationData(api) {
@@ -48,19 +48,21 @@ export class RemoteServiceProvider {
       this._http.get(url),
       this._http.get(locationUrl)
     );
-  }; //
+  } //
 
   login(api, payload, token) {
     let url = this.instance + this.api_endpoint + api;
     let response = this._http.post(url, payload);
+
     return response;
-  };//
+  }//
 
   postWithoutToken(api, payload) {
     let url = this.instance + this.api_endpoint + api;
     let headers = new HttpHeaders({ "Content-Type": "application/json" });
 
     let response = this._http.post(url, payload, { headers: headers });
+
     return response;
 
   }
@@ -69,26 +71,27 @@ export class RemoteServiceProvider {
     In this method we are calling 4 API using forkJoin
     If any one API fails all 4 will fail
   */
-  getAllInfoAboutSelectedRestaurant(restaurantId, token:any = '', payload:any = '') {
+  getAllInfoAboutSelectedRestaurant(restaurantId, token: any = '', payload: any = '') {
     console.log(token);
     console.log(payload);
 
-    let headers = new HttpHeaders({'Authorization': 'Bearer '+token});
+    let headers = new HttpHeaders({'Authorization': 'Bearer ' + token});
 
     let merchantDetailsUrl = `${this.instance}${this.api_endpoint}getMerchantDetails/${restaurantId}`;
-    // let menuDetailsUrl = `${this.instance}${this.api_endpoint}getMenuDetails/${restaurantId}`;
+    // Let menuDetailsUrl = `${this.instance}${this.api_endpoint}getMenuDetails/${restaurantId}`;
     let menuDetailsMerchantUrl = `${this.instance}${this.api_endpoint}getMobileAppMenuDetails`;
     let reviewListsUrl = `${this.instance}${this.api_endpoint}getReviewList?merchantId=${restaurantId}`;
-    // let menuDetailsMerchantUrl = `${this.instance}${this.api_endpoint}getMobileAppMenuDetails`
-    //https://adminstaging.azurewebsites.net/api/v1/getMobileAppMenuDetails
+    // Let menuDetailsMerchantUrl = `${this.instance}${this.api_endpoint}getMobileAppMenuDetails`
+    // Https://adminstaging.azurewebsites.net/api/v1/getMobileAppMenuDetails
+
     return Observable.forkJoin(
       this._http.get(merchantDetailsUrl),
-      // this._http.get(menuDetailsUrl),
+      // This._http.get(menuDetailsUrl),
       this._http.post(menuDetailsMerchantUrl, payload, {headers} ),
       this._http.get(reviewListsUrl)
     );
 
-  }; //
+  } //
 
   sendMessage(user: any) {
     this.subject.next(user);
