@@ -1,8 +1,23 @@
 page-restaurant-reviews {
 
+  ion-content {
+    background: #eaeaea;
+  }
+
+  .scroll-content {
+    background: #eaeaea;
+  }
+
+  #outerContainer {
+    width: 100%;
+    height: 100%;
+    background: #eaeaea;
+  }
+
     .merchantName {
         font-weight: bold;
         font-size: 2rem;
+        background: color($colors, white);
     }
 
     ul {
@@ -19,6 +34,94 @@ page-restaurant-reviews {
         }
       }
 
+      .restaurantProgressDivOuter {
+        width: 100%;
+        display: flex;
+
+        background: #fff;
+
+        .progressLeft {
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          .ratingTextInProgress {
+            font-size: 7rem;
+            font-weight: bold;
+            color: color($colors, lightgrey3);
+          }
+
+          .ratingTextTotalInProgress {
+            font-size: 2rem;
+            font-weight: bold;
+            color: color($colors, lightgrey3);
+          }         
+
+        }
+
+        .progressRight {
+          flex: 1;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+
+          .starRowOuter {
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            .starContainer {
+              width: 40%;
+              text-align: right;
+            }
+
+            ul {
+              padding: 0px;
+              margin: 0px;
+              &.rating li {
+                padding: 1px 2px !important;
+                background: none;
+                color: color($colors, lightgrey3);
+                padding: 0 !important;
+            
+                ion-icon {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+
+          .totalReviewsCount {
+            color: color($colors, lightgrey3);
+            align-self: flex-end;
+          }
+
+          .progressPercentRowContainer {
+            flex : 1;
+            width: 100%;
+            height: 3px;
+            background: color($colors, lightgrey2);;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .progressRowPercentInner {
+              width: 10%;
+              height: 100%;
+              background: color($colors, lightgrey3);
+            }
+          }
+
+        }
+
+
+      }
+
       .restaurantRatingContainer {
         ul {
             padding: 0px;
@@ -33,6 +136,82 @@ page-restaurant-reviews {
               }
             }
           }
+      }
+
+      .reviewContainerDivOuter {
+        width: 100%;
+        background: color($colors, white);
+
+        .review-card {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 40px;
+
+          .userImgContainer {
+            width: 80px;
+
+            img {
+              border-radius: 50%;
+              height: 60px;
+              max-width: 100%;
+            }
+          }
+
+          .review-info-card {
+            flex: 1;
+
+            .userInfoDiv {
+              font-weight: bold;
+              font-size: 1.5rem;
+              color: color($colors, lightgrey3);
+            }
+
+            .dateContainer {
+              color: color($colors, lightgrey3);
+            }
+
+
+          }
+
+          .starDateHandContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .starDateContainer {
+              flex: 1;
+              display: flex;
+              // justify-content: space-between;
+              align-items: center;
+
+              ul {
+                padding: 0px;
+                margin: 1px;
+                &.rating li {
+                  padding: 1px 2px !important;
+                  background: none;
+                  color: color($colors, firebrick5);
+              
+                  ion-icon {
+                    font-size: 12px;
+                  }
+                }
+              }
+            }
+
+            .no-margin {
+              margin: 0 !important;
+            }
+
+          }
+
+          .userReviewText {
+            text-align: justify;
+          }
+
+        }
+
       }
 
 }

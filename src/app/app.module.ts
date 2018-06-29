@@ -29,6 +29,7 @@ import { RestaurantHomePage } from '../pages/restaurant-home/restaurant-home';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RestaurantAboutPage } from '../pages/restaurant-about/restaurant-about';
 import { RestaurantReviewsPage } from '../pages/restaurant-reviews/restaurant-reviews';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { RestaurantReviewsPage } from '../pages/restaurant-reviews/restaurant-re
     HttpClientModule,
     IonicStorageModule.forRoot(),
     Ionic2RatingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

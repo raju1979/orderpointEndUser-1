@@ -40,19 +40,19 @@ export class HomePage {
       offerId: 'x112',
       offerTitle: 'Get 20% off on ABCD',
       offerDescription: 'Valid on Sandwich and pipes',
-      imgUrl: 'https://loremflickr.com/320/240/food,restaurant/all?random=1'
+      imgUrl: 'https://placeimg.com/480/480/restaurant'
     },
     {
       offerId: 'x113',
       offerTitle: 'Get 10% off on ZZZZ',
       offerDescription: 'Valid on Mi. 2000 shopping',
-      imgUrl: 'https://loremflickr.com/320/240/food,restaurant/all?random=2'
+      imgUrl: 'https://placeimg.com/480/480/restaurant'
     },
     {
       offerId: 'x114',
       offerTitle: 'Get 50% off on NNNN From XXXXX',
       offerDescription: 'Valid on Min. 500 shopping',
-      imgUrl: 'https://loremflickr.com/320/240/food,restaurant/all?random=3'
+      imgUrl: 'https://placeimg.com/480/480/restaurant'
     }
   ];
 

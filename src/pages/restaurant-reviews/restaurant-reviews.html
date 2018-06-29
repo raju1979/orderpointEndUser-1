@@ -7,45 +7,122 @@
 <ion-header>
 
   <ion-navbar color='appdark'>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Reviews</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
-  <p ion-text class="merchantName" text-center margin-bottom>{{merchantDetail.merchantname}}</p>
+  <div id="outerContainer">
 
-  <div class="restaurantRatingContainer" margin-top margin-bottom text-center>
+    <p ion-text class="merchantName" text-center margin-bottom  padding>{{merchantDetail?.merchantname}}</p>
+
+    <!-- <div class="restaurantRatingContainer" margin-top margin-bottom text-center *ngIf='merchantReviews'>
       <rating [(ngModel)]="merchantReviews.average_restaurant_rating" max="5" readOnly="true"></rating>
+    </div> -->
+
+    <!-- start restaurantProgressDivOuter -->
+    <div class="restaurantProgressDivOuter" *ngIf='merchantReviews' padding>
+
+      <div class="progressLeft">
+        <span class="ratingTextInProgress">{{merchantReviews?.average_restaurant_rating | number : '1.1-1'}}</span>
+        <span class="ratingTextTotalInProgress">Out of 5</span>
+      </div>
+
+      <div class="progressRight">
+
+        <div class="starRowOuter" *ngFor='let item of staticStarArray; let i = index'>
+          <div class="starContainer">
+            <!-- {{i}} {{staticStarArray[4 - i]}} -->
+            <span *ngFor='let star of staticStarArray[4 - i]'>
+              <ion-icon name="md-star" color='lightgrey3'></ion-icon>
+            </span>
+          </div>
+          <div class="progressPercentRowContainer">
+            <div class="progressRowPercentInner" [style.width]='setInnerWidth(i)'></div>
+          </div>
+        </div>
+
+        <div class="totalReviewsCount">{{merchantReviews?.reviews.length}} Reviews</div>
+
+      </div>
+
+    </div>
+    <!-- end restaurantProgressDivOuter -->
+
+    <!-- start reviewContainerDivOuter -->
+    <div class="reviewContainerDivOuter" margin-top padding>
+
+      <div class="review-card" *ngFor='let review of merchantReviews?.reviews'>
+        <div class="userImgContainer">
+          <img src="http://i.pravatar.cc/300" alt="" />
+        </div>
+        <div class="review-info-card">
+          <div class="userInfoDiv">
+            {{review?.customer_name}}
+          </div>
+          <div class="starDateHandContainer">
+            <div class="starDateContainer">
+              <span>
+                  <rating [(ngModel)]="review.start_rating" max="5" readOnly="true"></rating>
+              </span>
+              <span class="dateContainer">
+                  {{review?.review_date | dateFormat}}
+              </span>
+            </div>
+            <div class="HandContainer">
+              <button class="no-margin" ion-button icon-only clear color='lightgrey3'>
+                  <i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>
+              </button>
+              <button class="no-margin" ion-button icon-only clear color='lightgrey3'>
+                  <ion-icon name="md-more"></ion-icon>
+              </button>                
+            </div>
+          </div>
+          <div class="userReviewText">
+              {{review?.review_text}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- end reviewContainerDivOuter -->
+
+
+
+    <!-- <ion-card *ngFor='let review of merchantReviews?.reviews'>
+      <ion-card-header>
+        <div>{{review?.review_title}}</div>
+        <div ion-text color='lightgrey1'>{{review?.customer_name}}</div>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="review_text">
+          {{review?.review_text}}
+        </div>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <rating [(ngModel)]="review.start_rating" max="5" readOnly="true"></rating>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon name="ios-calendar-outline" color='danger'></ion-icon>
+            <div>{{review?.review_date | dateFormat}}</div>
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card> -->
+
   </div>
 
-  <ion-card *ngFor='let review of merchantReviews.reviews'>
-    <ion-card-header>
-      <div>{{review.review_title}}</div>
-      <div ion-text color='lightgrey1'>{{review.customer_name}}</div>
-    </ion-card-header>
-    <ion-card-content>
-      <div class="review_text">
-        {{review.review_text}}
-      </div>
-    </ion-card-content>
-
-    <ion-row>
-      <ion-col>
-        <button ion-button icon-start clear small>
-            <rating [(ngModel)]="review.start_rating" max="5" readOnly="true"></rating>
-        </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-start clear small>
-          <ion-icon name="ios-calendar-outline" color='danger'></ion-icon>
-          <div>{{review.review_date}}</div>
-        </button>
-      </ion-col>
-    </ion-row>
-
-  </ion-card>
 
 </ion-content>

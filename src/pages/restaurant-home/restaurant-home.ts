@@ -204,7 +204,13 @@ export class RestaurantHomePage {
 
   readAllReviews() {
     console.log(this.merchantDetail, this.merchantReviews);
-    this.navCtrl.push(RestaurantReviewsPage,
+
+    // Temporarily setting data
+    this._storage.set('reviews', this.merchantReviews);
+    this._storage.set('merchant', this.merchantDetail);
+
+
+        this.navCtrl.push(RestaurantReviewsPage,
       { merchantDetail: this.merchantDetail, merchantReviews: this.merchantReviews });
   }
 

@@ -87,7 +87,7 @@ export class RemoteServiceProvider {
     return Observable.forkJoin(
       this._http.get(merchantDetailsUrl),
       // This._http.get(menuDetailsUrl),
-      this._http.post(menuDetailsMerchantUrl, payload, {headers} ),
+      this._http.get(`${menuDetailsMerchantUrl}?merchant_id=${payload.merchant_id}`, {headers} ),
       this._http.get(reviewListsUrl)
     );
 
